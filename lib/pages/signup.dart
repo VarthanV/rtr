@@ -22,9 +22,10 @@ class _SignUpPageState extends State<SignUpPage> {
     );
     _auth.signInWithCredential(credential).then((userData) {
       user=userData.user.displayName;
+      print(user);
       
     });
-    return user;
+   
 
   }
 

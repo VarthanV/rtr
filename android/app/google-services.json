@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "726690175582",
+    "firebase_url": "https://rotary-app-10e6e.firebaseio.com",
+    "project_id": "rotary-app-10e6e",
+    "storage_bucket": "rotary-app-10e6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726690175582:android:a5640c8f8e79c9269572cf",
+        "android_client_info": {
+          "package_name": "android.app.rtr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "726690175582-vg9r9irons3ck8qdmq027lh1nsfvhfjk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "android.app.rtr",
+            "certificate_hash": "ceaef540ad0ad6a79a2cfb13a2e3c322e2dcccda"
+          }
+        },
+        {
+          "client_id": "726690175582-u7na3b6lv7phliih5q8dgt9gd8h6nt4v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVrb7oVMN8aNjAX68BxrZUGpqdXqY32U8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "726690175582-u7na3b6lv7phliih5q8dgt9gd8h6nt4v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

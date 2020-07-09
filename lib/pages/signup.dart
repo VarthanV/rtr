@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -6,6 +8,26 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  var user;
+
+  Future<FirebaseUser> googleSignIn() async {
+    // Start
+    GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    _auth.signInWithCredential(credential).then((userData) {
+      user=userData.user.displayName;
+      
+    });
+    return user;
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -55,7 +77,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         padding: EdgeInsets.fromLTRB(35, 15, 35, 15),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100)),
-                        onPressed: () {},
+                        onPressed: () {
+                          googleSignIn();
+                        },
                         icon: Image.asset("assets/google.png"),
                         label: Text(
                           "Sign in with Google",
@@ -66,22 +90,22 @@ class _SignUpPageState extends State<SignUpPage> {
                               fontWeight: FontWeight.w600),
                         )),
                     Container(
-                      margin: EdgeInsets.only(top: 10),
-                    child:RaisedButton(
-                        color: Color.fromRGBO(255, 255, 255, 0.9),
-                        elevation: 4,
-                        padding: EdgeInsets.fromLTRB(60, 15, 60, 15),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100)),
-                        onPressed: () {},
-                        child: Text(
-                          "Sign in as Guest",
-                          style: TextStyle(
-                              color: Colors.grey[600],
-                              fontFamily: "Poppins",
-                              letterSpacing: 0.5,
-                              fontWeight: FontWeight.w600),
-                        ))),
+                        margin: EdgeInsets.only(top: 10),
+                        child: RaisedButton(
+                            color: Color.fromRGBO(255, 255, 255, 0.9),
+                            elevation: 4,
+                            padding: EdgeInsets.fromLTRB(60, 15, 60, 15),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100)),
+                            onPressed: () {},
+                            child: Text(
+                              "Sign in as Guest",
+                              style: TextStyle(
+                                  color: Colors.grey[600],
+                                  fontFamily: "Poppins",
+                                  letterSpacing: 0.5,
+                                  fontWeight: FontWeight.w600),
+                            ))),
                   ],
                 ))
           ],
